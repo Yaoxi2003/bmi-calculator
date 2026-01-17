@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@theme {
+  /* font */
+  --font-primary: "Inter", sans-serif;
+  /* Font sizes */
+  --text-t1: 64px;
+  --text-t2: 48px;
+  --text-t3: 32px;
+  --text-t4: 24px;
+  --text-t5: 20px;
+  --text-t6: 16px;
+  --text-t7: 14px;
+
+  /* Color */
+  --color-grey500: #5E6E85;
+  --color-grey300: #ACC1DE;
+
+  --color-blue900: #253347;
+  --color-blue500: #345FF6;
+  --color-blue300: #B3D3F1;
+  --color-blue100: #E1E7FE;
+
+  --color-gradient1: #D6FCFE;
+  --color-gradient2: #D6E6FE;
+ 
+  /* Spacing */
+  --spacing-mobile: 400px;
+  --spacing-tablet: 768px;
+  --spacing-desktop: 1300px;
+
+}
+
+body {
+  color: var(--color-grey500);
+  font-family: var(--font-primary);
+  font-size: var(--text-t6);
+  font-weight: 400;
+  line-height: 1.5;
+  background: white;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/*========== Remove the default style of form ===========*/
+@layer utilities {
+  /* Chrome, Safari, Edge, Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input:focus {
+    outline: none
+  }
+
+}
+
+
+@layer components {
+
+  /*========== Typography ===========*/
+  h1, h2, h3, h4 {
+    @apply text-blue900 font-semibold
+  }
+  h1 {
+    @apply text-t2 lg:text-t1 leading-[1.1]
+  }
+  h2 {
+    @apply text-t3 lg:text-t2
+  }
+  h3 {
+    @apply text-t4 
+  }
+  h4 {
+    @apply text-t5
+  }
+
+  .bmi-result {
+    @apply text-white font-semibold text-t2 lg:text-t1
+  }
+
+  .label {
+    @apply text-grey500 text-t7 mb-3
+  }
+
+  /*========== Buttons ===========*/
+
+  /* Input */
+  button {
+    @apply cursor-pointer
+  }
+  .primary-input {
+    @apply rounded-xl border border-grey500 py-[16px] px-[24px] w-full
+            text-blue900 text-t4 transition-colors duration-300
+  }
+  .primary-input:hover,
+  .primary-input:focus {
+    @apply border-blue500 
+  }
+  .input-wrap {
+    @apply relative w-full
+  }
+  .unit {
+    @apply absolute top-1/2 -translate-y-1/2 right-[24px] text-blue500
+  }
+
+  /* radio */
+  .custom-radio {
+    @apply appearance-none w-7 h-7 border border-grey500 rounded-full cursor-pointer
+    hover:border-blue500 checked:bg-blue100 checked:border-none
+    relative transition-all duration-300
+  }
+  .custom-radio:checked::after {
+    @apply content-[''] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2
+            w-3.5 h-3.5 bg-blue500 rounded-full
+  }
+
+  /* form */
+  .bmi-card {
+    @apply lg:w-[45%] rounded-lg p-[24px] sm:p-[32px] bg-white flex flex-col gap-5 shadow-xl
+  }
+
+  /*========== General layout ===========*/
+  .container-pro {
+    @apply max-w-mobile sm:max-w-tablet lg:max-w-desktop mx-auto px-4
+  }
+
+
+  /* bg */
+  .bg-img {
+    @apply absolute -z-1 top-0 left-0 h-[650px] w-full rounded-b-2xl bg-linear-to-r from-gradient1/5 to-gradient2
+            lg:w-[70%] lg:rounded-bl-2xl
+  }
+  .bg-color {
+    @apply absolute -z-1 top-0 left-0 h-full w-full lg:w-[98%] lg:rounded-r-3xl bg-linear-to-r from-gradient1/5 to-gradient2/30
+  }
+
+  /* Hero section */
+  .hero {
+  @apply py-10 sm:py-20 lg:max-w-desktop lg:mx-auto lg:px-4 flex flex-col gap-[40px] sm:flex-row sm:justify-between sm:items-center
+ }
+
+ /* feature card */
+ .item-style {
+  @apply flex flex-col gap-[24px] sm:flex-row sm:items-center lg:flex-col lg:items-start
+ }
+
+ .card-style {
+  @apply rounded-xl p-[24px] sm:p-[32px] bg-white flex flex-col gap-4 shadow-xl shadow-blue100
+          lg:col-span-4
+ }
+
+ .gender {
+  @apply lg:col-start-8
+ }
+ .age {
+  @apply lg:col-start-5
+ }
+ .muscle {
+  @apply lg:col-start-9
+ }
+ .pregnancy {
+  @apply lg:col-start-3
+ }
+ .race {
+  @apply sm:col-span-2 max-w-[365px] lg:max-w-full sm:justify-self-center lg:col-start-7 lg:col-span-4
+ }
+
+}
+
+
